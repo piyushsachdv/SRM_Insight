@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Help Desk - SRM University</title>
+    <!-- Link to CSS stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Link to external Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <!-- Correct image path using url_for -->
+            <img src="{{ url_for('static', filename='images/srm-logo.png') }}" alt="SRM Logo" class="logo">
+        </div>
+        <h1 class="fade-in">SRM University Help Desk</h1>
+        <p class="fade-in">Your support system for all your queries</p>
+    </header>
+
+    <section id="contact" class="contact-section">
+        <h2 class="scroll-animation">Contact Us</h2>
+        <p class="scroll-animation">If you have any questions or need assistance, feel free to reach out to us.</p>
+        
+        <form id="contact-form" action="/submit_form" method="POST" class="form-animation">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="animated-btn">Send Message</button>
+        </form>
+
+        <!-- Display flash messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flash-messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </section>
+
+    <footer>
+        <p>&copy; 2024 SRM University. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Link to JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

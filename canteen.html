@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Food from Canteen</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Alfa+Slab+One&display=swap');
+
+        /* General Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: #f1f1f1;
+            overflow-x: hidden;
+            scrollbar-width: thin;
+            scrollbar-color: #ffcc00 #333;
+        }
+
+        /* Scrollbar styling for Chrome, Edge, and Safari */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #333; 
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #ffcc00;
+            border-radius: 10px;
+        }
+
+        header {
+            background-color: #212121;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 48px;
+            letter-spacing: 2px;
+            color: #ff3d00;
+            text-transform: uppercase;
+            font-family: 'Alfa Slab One', cursive;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ff3d00, #ffcc00);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            text-align: center;
+            color: #ffcc00;
+            margin-bottom: 30px;
+            font-size: 28px;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        /* Canteen Section */
+        .canteen {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(42, 42, 42, 0.8);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .red-canteen {
+            background-image: url('https://example.com/red-background.jpg'); /* Replace with your image URL */
+        }
+
+        .green-canteen {
+            background-image: url('https://example.com/green-background.jpg'); /* Replace with your image URL */
+        }
+
+        .yellow-canteen {
+            background-image: url('https://example.com/yellow-background.jpg'); /* Replace with your image URL */
+        }
+
+        .canteen h3 {
+            text-align: center;
+            color: #ff3d00; /* Red color for red canteen */
+        }
+
+        .green-canteen h3 {
+            color: #28a745; /* Green color for green canteen */
+        }
+
+        .yellow-canteen h3 {
+            color: #ffc107; /* Yellow color for yellow canteen */
+        }
+
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            width: 250px;
+            height: 250px;
+            padding: 10px;
+            background-color: rgba(33, 33, 33, 0.9);
+            border: 2px solid #ffcc00;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+            border-color: #ff3d00;
+        }
+
+        .menu-item img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .menu-item span {
+            font-size: 18px;
+            color: #ffcc00;
+            margin-top: 10px;
+        }
+
+        .menu-item input {
+            width: 60px;
+            padding: 5px;
+            font-size: 18px;
+            text-align: center;
+            border: 2px solid #ffcc00;
+            border-radius: 5px;
+            margin-top: 10px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #ff3d00;
+            color: white;
+            font-size: 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e03300;
+        }
+
+        .order-summary {
+            background-color: #333;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 8px;
+            border: 2px solid #ffcc00;
+        }
+
+        .order-summary h3 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #ffcc00;
+        }
+
+        .order-summary p {
+            font-size: 18px;
+            color: #f1f1f1;
+        }
+
+        .order-summary strong {
+            color: #ffcc00;
+        }
+
+        /* FAQ Section */
+        .faq {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .faq h2 {
+            text-align: center;
+            color: #ffcc00;
+            margin-bottom: 20px;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+        }
+
+        .faq-item h4 {
+            color: #ffcc00;
+            cursor: pointer;
+        }
+
+        .faq-item p {
+            display: none;
+            color: #f1f1f1;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>SRM CANTEEN</h1>
+    </header>
+
+    <div class="container">
+        <h2>Menu</h2>
+
+        <div class="canteen red-canteen">
+            <h2>Red Canteen</h2>
+            <div class="menu-container">
+                <div class="menu-item">
+                    <img src="https://imgs.search.brave.com/U-hWe4pS0aQTwhnc9IZj3bnodKjHRy6PuLzaZoGRq3E/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTg0/OTQ2NzAxL3Bob3Rv/L3BpenphLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz05N3Jj/MFZJaS1zM21uNHhl/NHhEeTlTLVhKX09o/Ym45MlhhRU1haUlE/X2VZPQ" alt="Pizza">
+                    <span>Pizza - ₹80</span>
+                    <input type="number" id="pizza" min="0" placeholder="0">
+                </div>
+                <div class="menu-item">
+                    <img src="https://imgs.search.brave.com/ij4SNUjixkEfC7uMkA34ZVUQCP-3Sm-Q-jPk8jqZFGE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTgy/NzQ0OTQzL3Bob3Rv/L2J1cmdlci5qcGc_/cz02MTJ4NjEyJnc9/MCZrPTIwJmM9cGky/MElpZVhmOFVOazZT/ZUp5LWNIeHViYVZE/N0w1Um53MmkwUW84/dk55TT0" alt="Burger">
+                    <span>Burger - ₹50</span>
+                    <input type="number" id="burger" min="0" placeholder="0">
+                </div>
+                <div class="menu-item">
+                    <img src="https://imgs.search.brave.com/whQpATzS0LNe6bM2FZawgwaveNDETCO5qZ78Cyq-d3w/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMuZ3FpbmRpYS5j/b20vcGhvdG9zLzVl/OWQ5NWExMjI4Njdi/MDAwODk2MDdmZS9t/YXN0ZXIvd18xNjAw/LGNfbGltaXQvTWFz/YWxhLVBhc3RhLmpw/Zw" alt="Pasta">
+                    <span>Pasta - ₹80</span>
+                    <input type="number" id="pasta" min="0" placeholder="0">
+                </div>
+            </div>
+        </div>
+
+        <div class="canteen green-canteen"> 
+            <h2>Green Canteen</h2>
+            <div class="menu-container">
+                <div class="menu-item">
+                    <img src="https://imgs.search.brave.com/qw01tFHm94LmyaFHqBHz5C4EKxPsHD1RdNJhrRS9gDc/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/bG92ZWFuZGxlbW9u/cy5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMjAvMDUvYWly/LWZyeWVyLWZyZW5j/aC1mcmllcy5qcGc" alt="French Fries">
+                    <span>French Fries - ₹40</span>
+                    <input type="number" id="fries" min="0" placeholder="0">
+                </div>
+                <div class="menu-item">
+                    <img src="https://imgs.search.brave.com/ZcVDZq-o-zSkJ4RBCw3-6UCJq1f2X_2q84E0uEmBono/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTE4/NTg2MzAyNS9waG90/by9zYW1vc2EtYW5k/LWhvdC10ZWEtb3It/Y2hhaS1zbmFjay5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/RVNoYUVIMUdQdnBI/NGZJeTRtVXNyenpq/YnRtdUpzOFJTMG4w/SDRHTVB5ST0" alt="Samosa">
+                    <span>Samosa - ₹20</span>
+                    <input type="number" id="samosa" min="0" placeholder="0">
+                </div>
+            </div>
+        </div>
+
+        <div class="canteen yellow-canteen">
+            <h2>Yellow Canteen</h2>
+            <div class="menu-container">
+                <div class="menu-item">
+                    <img src="https://imgs.search.brave.com/S8X6P7uFZt6GMB3Iu53RDAfPyw4LfiI4EKwpN5hlkeE/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jaGVy/aXNldGFwcmkuY29t/L0Fzc2V0cy9Ib21l/cGFnZS81UjVBMzc1/Ni5qcGc" alt="Tea">
+                    <span>Tea - ₹10</span>
+                    <input type="number" id="tea" min="0" placeholder="0">
+                </div>
+                <div class="menu-item">
+                    <img src="data:image/jpeg;base64,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" alt="Oreo Shake">
+                    <span>Oreo Shake - ₹100</span>
+                    <input type="number" id="oreoshake" min="0" placeholder="0">
+                </div>
+            </div>
+        </div>
+
+        <button onclick="calculateTotal()">Place Order</button>
+
+        <div class="order-summary" id="order-summary" style="display: none;">
+            <h3>Order Summary</h3>
+            <p id="order-details"></p>
+            <p><strong>Total: ₹<span id="total-price"></span></strong></p>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="faq-item">
+                <h4 onclick="toggleFAQ(this)">What are the canteen timings?</h4>
+                <p>Canteen timings are from 8 AM to 8 PM every day.</p>
+            </div>
+            <div class="faq-item">
+                <h4 onclick="toggleFAQ(this)">How can I pay for my order?</h4>
+                <p>You can pay using cash or any digital payment methods available at the canteen.</p>
+            </div>
+            <div class="faq-item">
+                <h4 onclick="toggleFAQ(this)">Is there a minimum order amount?</h4>
+                <p>No, there is no minimum order amount.</p>
+            </div>
+            <div class="faq-item">
+                <h4 onclick="toggleFAQ(this)">Can I return my food if I'm not satisfied?</h4>
+                <p>Food cannot be returned, but please let us know if there are any issues with your order.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateTotal() {
+            const pizzaPrice = 80;
+            const burgerPrice = 50;
+            const pastaPrice = 80;
+            const friesPrice = 40;
+            const samosaPrice = 20;
+            const teaPrice = 10;
+            const oreoShakePrice = 100;
+
+            let pizzaQty = parseInt(document.getElementById('pizza').value) || 0;
+            let burgerQty = parseInt(document.getElementById('burger').value) || 0;
+            let pastaQty = parseInt(document.getElementById('pasta').value) || 0;
+            let friesQty = parseInt(document.getElementById('fries').value) || 0;
+            let samosaQty = parseInt(document.getElementById('samosa').value) || 0;
+            let teaQty = parseInt(document.getElementById('tea').value) || 0;
+            let oreoShakeQty = parseInt(document.getElementById('oreoshake').value) || 0;
+
+            let totalPrice = (pizzaQty * pizzaPrice) + (burgerQty * burgerPrice) + 
+                             (pastaQty * pastaPrice) + (friesQty * friesPrice) + 
+                             (samosaQty * samosaPrice) + (teaQty * teaPrice) + 
+                             (oreoShakeQty * oreoShakePrice);
+            let orderDetails = '';
+
+            if (pizzaQty > 0) orderDetails += Pizza: ${pizzaQty} x ₹${pizzaPrice} = ₹${pizzaQty * pizzaPrice}<br>;
+            if (burgerQty > 0) orderDetails += Burger: ${burgerQty} x ₹${burgerPrice} = ₹${burgerQty * burgerPrice}<br>;
+            if (pastaQty > 0) orderDetails += Pasta: ${pastaQty} x ₹${pastaPrice} = ₹${pastaQty * pastaPrice}<br>;
+            if (friesQty > 0) orderDetails += French Fries: ${friesQty} x ₹${friesPrice} = ₹${friesQty * friesPrice}<br>;
+            if (samosaQty > 0) orderDetails += Samosa: ${samosaQty} x ₹${samosaPrice} = ₹${samosaQty * samosaPrice}<br>;
+            if (teaQty > 0) orderDetails += Tea: ${teaQty} x ₹${teaPrice} = ₹${teaQty * teaPrice}<br>;
+            if (oreoShakeQty > 0) orderDetails += Oreo Shake: ${oreoShakeQty} x ₹${oreoShakePrice} = ₹${oreoShakeQty * oreoShakePrice}<br>;
+
+            document.getElementById('order-details').innerHTML = orderDetails;
+            document.getElementById('total-price').textContent = totalPrice;
+            document.getElementById('order-summary').style.display = 'block';
+        }
+
+        function toggleFAQ(faqElement) {
+            const answer = faqElement.nextElementSibling;
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>

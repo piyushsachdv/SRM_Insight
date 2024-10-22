@@ -1,0 +1,2 @@
+# SRM_Insight
+ SRM INSIGHT is a dynamic and user-friendly website designed for the SRM IST Delhi NCR campus. It features a sleek, modern layout, offering an intuitive experience for both students and staff. Key features include a convenient Canteen Ordering System that allows users to browse menus and place orders directly online, a vibrant Photo Gallery showcasing memorable moments from campus events, and a dedicated Helpdesk to assist with student queries and concerns. SRM INSIGHT is the perfect digital hub for campus life, combining functionality with a stylish interface.

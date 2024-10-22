@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SRM Insight - Delhi NCR Campus</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <!-- Video Source -->
+    <section class="showcase">
+        <header>
+            <h2 class="logo">
+                <img src="logo.png" alt="SRM Insight Logo" style="height: 15em; vertical-align: middle;"> <!-- Set height to 15em -->
+            </h2>
+            <div class="toggle" onclick="toggleMenu()"></div>
+        </header>
+        <video src="bgvideo.mp4" muted loop autoplay></video>
+        <div class="overlay"></div>
+        <div class="text">
+            <h2>SRM Insight</h2>
+            <h3>DELHI-NCR Campus</h3>
+            <p>Welcome to the SRM Institute of Science and Technology, where excellence meets innovation.</p>
+            <a href="https://www.srmup.in/" onclick="toggleMenu()">Official Website</a> <!-- Change Explore to Events -->
+        </div>
+        <ul class="social">
+            <li><a href="https://www.facebook.com/srmup"><img src="https://i.ibb.co/x7P24fL/facebook.png"></a></li>
+            <li><a href="https://x.com/srmup"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png"></a></li>
+            <li><a href="https://www.instagram.com/srmistup/?hl=en"><img src="https://i.ibb.co/ySwtH4B/instagram.png"></a></li>
+        </ul>
+    </section>
+    <div class="menu" id="sidebar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="canteen.html">Canteen</a></li> <!-- Link to canteen.html -->
+            <li><a href="http://127.0.0.1:5000/">Helpdesk</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+            
+        </ul>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Close sidebar when clicking outside
+        window.addEventListener('click', (event) => {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.querySelector('.toggle');
+            if (!sidebar.contains(event.target) && !toggle.contains(event.target)) {
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
